@@ -9,9 +9,20 @@ router.post('/', async(req, res) => {
     let code = 0;
     let msg = "Success";
 
+    let start = new Date(startDate);
+    let end = new Date(endDate);
+
     if (!checkValues(req.body, "startDate|endDate|minCount|maxCount")) {
         code = 1;
         msg = "Missing JSON Body value(s).";
+        let result = {
+            code: code,
+            msg: msg
+        }
+        return res.status(200).send(result);
+    } else if (minCount > maxCount || maxCount < minCount || start > end || end < start) {
+        code = 2;
+        msg = "Minimum value is greater than maximum value or vice versa.";
         let result = {
             code: code,
             msg: msg
@@ -21,7 +32,7 @@ router.post('/', async(req, res) => {
 
     const data = await getir.aggregate([
         {
-            $match: { createdAt: { $gte: new Date(startDate), $lte: new Date(endDate) } }
+            $match: { createdAt: { $gte: start, $lte: end } }
         },
         {
             $project: {
