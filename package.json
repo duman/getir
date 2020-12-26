@@ -1,4 +1,9 @@
 {
+  "dependencies": {
+    "express": "4.17.1",
+    "mocha": "8.2.1",
+    "mongoose": "5.11.8"
+  },
   "scripts": {
     "start": "node app.js",
     "test": "mocha"
