@@ -19,12 +19,15 @@ mongoose.connect(url,connectionParams)
 
 describe('Reading item details', () => {
     it('Should retrieve data from test database with key value of \'oABnNNFj\'', function(done) {
-        //Look up the 'key' from a previously saved data entry.
+        // Look up the 'key' from a previously saved data entry.
         getir.find({key: 'oABnNNFj'}, (err, name) => {
             if(err) {throw err;}
             if(name.length === 0) {throw new Error('No data!');}
-            mongoose.connection.close()
+            mongoose.connection.close(); // Otherwise process hangs, connection should be closed.
             done();
         });
     });
 })
+
+// Following the "Avoid Over Engineering" crucial point...
+// Unit test has been only done for the DB read process, user doesn't have other permissions.
