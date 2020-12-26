@@ -230,3 +230,8 @@ Response payload:
     "msg": "Missing JSON Body value(s)."
 }
 ```
+
+---
+
+### Footer note
+If you want to run this on your local machine make sure to set the port for `app.listen(process.env.PORT);` section in `app.js`. I've considered that this would only run in Heroku but on a second thought it's a good idea to add this note.
