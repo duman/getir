@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://seeklogo.com/images/G/getir-logo-489FC74138-seeklogo.com.png" />
+</p>
+
 # Getir Challenge
 
 Below will explain the challenge and the solution for each point.
