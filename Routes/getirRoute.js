@@ -1,10 +1,9 @@
 var express = require('express');
-var mongo = require('./Utils/db');
-var getir = require("./Models/getir");
-var app = express();
-app.use(express.json());
+const router = express.Router();
+var mongo = require('../Utils/db');
+var getir = require("../Models/getir");
 
-app.post('/', async(req, res) => {
+router.post('/', async(req, res) => {
     const {startDate, endDate, minCount, maxCount} = req.body;
 
     let code = 0;
@@ -49,8 +48,6 @@ app.post('/', async(req, res) => {
     });
 });
 
-app.listen(3000);
-
 function checkValues(obj, list) {
     if (typeof list === "string") {
         list = list.split("|");
@@ -63,3 +60,5 @@ function checkValues(obj, list) {
     }
     return true;
 }
+
+module.exports = router;
