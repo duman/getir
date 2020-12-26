@@ -24,4 +24,4 @@ const getirRoute = require('./Routes/getirRoute');
 app.use('/getir', getirRoute);
 
 module.exports = app;
-app.listen(3000);
+app.listen(process.env.PORT);
